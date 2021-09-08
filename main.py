@@ -1,3 +1,4 @@
+import os
 from email.mime.application import MIMEApplication
 from flask import Flask
 from flask_restful import Api
@@ -57,4 +58,5 @@ def sendEmail(document_id, token, receiverEmail, username, fileName):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host=os.getenv('IP', '0.0.0.0'),
+            port=int(os.getenv('PORT', 4444)))
